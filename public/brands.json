@@ -1,0 +1,32 @@
+[
+    {   
+        "_id": 1,
+        "name": "Tesla",
+        "image": "https://i.postimg.cc/L5zfrJ71/images-8.jpg"
+    },
+    {
+        "_id": 2,
+        "name": "Mercedes-Benz",
+        "image": "https://i.postimg.cc/43q9yvRc/images-7.jpg"
+    },
+    {
+        "_id": 3,
+        "name": "BMW",
+        "image": "https://i.postimg.cc/jdtJDdmM/images-6.jpg"
+    },
+    {
+        "_id": 4,
+        "name": "Ford Mustang",
+        "image": "https://i.postimg.cc/vBrgHc7L/download-0.jpg"
+    },
+    {
+        "_id": 5,
+        "name": "Honda",
+        "image": "https://i.postimg.cc/pTBR4xCd/download.jpg"
+    },
+    {
+        "_id": 6,
+        "name": "Toyota",
+        "image": "https://i.postimg.cc/FFkCGmrb/images-9.jpg"
+    }
+]

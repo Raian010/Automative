@@ -7,10 +7,13 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/add">Add Product</NavLink>
+        <NavLink to="/products">Add Product</NavLink>
       </li>
       <li>
         <NavLink to="/cart">My Cart</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
@@ -42,8 +45,9 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="btn btn-ghost normal-case mb-5">
+        <h2><span className="text-3xl font-bold">My <span className="text-amber-400">Car</span></span></h2>
         <img className="w-[70px]" src="https://i.postimg.cc/hjF4FXcc/Pngtree-sport-car-logo-vector-6398339.png" alt="" />
-        <h2><span className="text-red-700 text-2xl font-bold">My Car</span></h2>
+       
         </div>
       </div>
       
@@ -51,7 +55,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn bg-neutral text-white hover:bg-blue-700">Login</a>
+        <NavLink to="/login"><a className="btn bg-neutral text-white hover:bg-blue-700">Login</a></NavLink>
       </div>
     </div>
   );
