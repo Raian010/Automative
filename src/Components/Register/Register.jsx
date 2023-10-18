@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authprovider";
+import { updateProfile } from "firebase/auth";
+import Swal from "sweetalert2";
 
 const Register = () => {
   const { signUp } = useContext(AuthContext);
@@ -10,9 +12,10 @@ const Register = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(name, email, password);
+    console.log(name, photo, email, password);
 
     setHandleError("");
 
@@ -35,6 +38,19 @@ const Register = () => {
     signUp(email, password)
       .then((result) => {
         console.log(result.user);
+
+        updateProfile(result.user, {
+          displayName: name,
+          photoURL: photo,
+        })
+          .then(() => console.log("updated"))
+          .catch((error) => console.log(error));
+
+          Swal.fire(
+            'Successful!',
+            'Registration done!',
+            'success'
+          )
       })
       .catch((error) => console.log(error));
   };
@@ -57,6 +73,18 @@ const Register = () => {
                 type="text"
                 name="name"
                 placeholder="Your Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">PhotoURL</span>
+              </label>
+              <input
+                type="text"
+                name="photo"
+                placeholder="PhotoURL"
                 className="input input-bordered"
                 required
               />

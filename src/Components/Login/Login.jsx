@@ -1,11 +1,14 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/Authprovider";
+import Swal from "sweetalert2";
+
 
 const Login = () => {
     const {signIn, googleSIgn} = useContext(AuthContext);
     const [signinError,setSigninError] = useState(null);
 
+    
     const googleSignin = () => {
           googleSIgn()
           .then(result => {
@@ -28,6 +31,11 @@ const Login = () => {
         signIn(email,password)
         .then(result => {
             console.log(result.user)
+            Swal.fire(
+              'Success!',
+              'Your login successful',
+              'success'
+            )
         })
         .catch(error => {
             console.log(error.message);

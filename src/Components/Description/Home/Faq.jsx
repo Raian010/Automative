@@ -2,7 +2,7 @@ const Faq = () => {
   return (
     <div>
       <h2 className="text-center mt-20 font-bold text-5xl">
-        FA<span className="text-amber-400">Q</span>
+        Asked <span className="text-amber-400">Questions</span>
       </h2>
       <div className="space-y-5 mt-5">
       <div className="collapse collapse-arrow bg-base-200">

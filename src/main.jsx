@@ -13,11 +13,16 @@ import Description from './Components/Description/Description.jsx';
 import Addproduct from './Components/Add/Addproduct.jsx';
 import Login from './Components/Login/Login.jsx';
 import Register from './Components/Register/Register.jsx';
+import ErrorElement from './Components/Error/ErrorElement.jsx';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
+import BrandProducts from './Components/BrandProducts/BrandProducts.jsx';
+import Details from './Components/Details/Details.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
+    errorElement: <ErrorElement></ErrorElement>,
     children: [
       {
         path: "/",
@@ -37,7 +42,17 @@ const router = createBrowserRouter([
       },
       {
         path: "/products",
-        element: <Addproduct></Addproduct>
+        element: <PrivateRoute><Addproduct></Addproduct></PrivateRoute>
+      },
+      {
+        path: "/brandProducts/:brand",
+        element: <BrandProducts></BrandProducts>,
+        loader: ({params}) => fetch(`http://localhost:5000/cars/${params.brand}`)
+      },
+      {
+        path: "/details/:id",
+        element: <Details></Details>,
+        loader: ({params}) => fetch(`http://localhost:5000/cars/${params.id}`) 
       }
     ]
   },
