@@ -17,6 +17,7 @@ import ErrorElement from './Components/Error/ErrorElement.jsx';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute.jsx';
 import BrandProducts from './Components/BrandProducts/BrandProducts.jsx';
 import Details from './Components/Details/Details.jsx';
+import Cart from './Components/Cart/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -51,8 +52,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/details/:id",
-        element: <Details></Details>,
+        element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: ({params}) => fetch(`http://localhost:5000/cars/${params.id}`) 
+      },
+      {
+        path: "/cart",
+        element: <PrivateRoute><Cart></Cart></PrivateRoute>
       }
     ]
   },

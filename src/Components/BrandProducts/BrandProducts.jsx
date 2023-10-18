@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
 import { FaDollarSign,FaCar } from 'react-icons/fa'; 
 
@@ -69,7 +69,7 @@ const BrandProducts = () => {
                   activeColor="#ffd700"
                 />
                 </p>
-                <button className="btn btn-primary">Details</button>
+                <Link to={`/details/${car._id}`}><button className="btn btn-primary">Details</button></Link>
               </div>
               <div className="flex justify-between">
                 
