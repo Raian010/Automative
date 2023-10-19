@@ -5,32 +5,38 @@ import app from "../Firebase/firebase.config";
  
 export const AuthContext = createContext(null);
 
-const Authprovider = ({children}) => {
 
+const Authprovider = ({children}) => {
+ 
     const auth = getAuth(app);
-    const [user,setUser] = useState(null)
+
+    const [loading,setLoading] = useState(true);
+   
+    const [user,setUser] = useState([])
 
     // User signUp
     const signUp = (email,password) => {
+        setLoading(true);
         return createUserWithEmailAndPassword(auth,email,password);
     }
 
 
     // User signIn
     const signIn = (email,password) => {
+        setLoading(true);
         return signInWithEmailAndPassword(auth,email,password);
     }
 
     // Logout
     const logout = () => {
-        // setLoading(true);
+        setLoading(true);
         return signOut(auth);
     }
 
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser);
-            // setLoading(false);
+            setLoading(false);
         });
         return () => {
             unSubscribe();
@@ -48,6 +54,7 @@ const Authprovider = ({children}) => {
       signUp,
       signIn,
       logout,
+      loading,
       googleSIgn
     }
     return (

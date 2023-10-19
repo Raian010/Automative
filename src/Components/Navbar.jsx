@@ -65,14 +65,16 @@ const Navbar = () => {
       <div className="navbar-end">
           {
             user ?
-            <p className="flex items-center"><span className="font-bold">{user ?
+            <div className="flex items-center"><span className="font-bold">
+              {
+              user ?
                <p className="flex items-center">
                 <span>
                   <img className={user.photoURL ? 'h-[60px] mr-2 rounded-full bg-gray-400 p-1' : ""} src={user ? user.photoURL : ""} alt="" />
                   </span>
                   <span className="mr-2 bg-blue-200 p-3 rounded-lg">{user.email}</span></p> : "" }
                </span>
-               <Link to="/login"><button onClick={handlelogOut} className="btn btn-primary">Logout</button></Link></p> :
+               <Link to="/login"><button onClick={handlelogOut} className="btn btn-primary">Logout</button></Link></div> :
             <NavLink to="/login"><button className="btn btn-primary">Login</button></NavLink>
           }
           

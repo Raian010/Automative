@@ -23,50 +23,56 @@ const BrandProducts = () => {
 
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch('/products.json')
+    fetch("/products.json")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
   console.log(products);
 
-  const product = products.find(produc => produc.name == brand)
+  const product = products.find((produc) => produc.brand == brand);
   console.log(product);
-  // const {image1,image2,image3} = product;
-  // console.log(image1,image2,image3);
 
   return (
     <div>
-      {/* <h3>
-        {brandCars.length > 0
-          ? `There is ${brandCars.length} cars`
-          : "There is no cars"}{" "}
-      </h3> */}
-
-     
-      <div className="carousel w-full">
-  <div id="slide1" className="carousel-item relative w-full">
-    <img src={product.image1} className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide4" className="btn btn-circle">❮</a> 
-      <a href="#slide2" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide2" className="carousel-item relative w-full">
-    <img src={product.image2}className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide1" className="btn btn-circle">❮</a> 
-      <a href="#slide3" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-  <div id="slide3" className="carousel-item relative w-full">
-    <img src={product.image3} className="w-full" />
-    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-      <a href="#slide2" className="btn btn-circle">❮</a> 
-      <a href="#slide4" className="btn btn-circle">❯</a>
-    </div>
-  </div> 
-</div>
-      
+      {product ? (
+        <div className="carousel w-full">
+          <div id="slide1" className="carousel-item relative w-full">
+            <img src={product.image1} className="w-full" />
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide4" className="btn btn-circle">
+                ❮
+              </a>
+              <a href="#slide2" className="btn btn-circle">
+                ❯
+              </a>
+            </div>
+          </div>
+          <div id="slide2" className="carousel-item relative w-full">
+            <img src={product.image2} className="w-full" />
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide1" className="btn btn-circle">
+                ❮
+              </a>
+              <a href="#slide3" className="btn btn-circle">
+                ❯
+              </a>
+            </div>
+          </div>
+          <div id="slide3" className="carousel-item relative w-full">
+            <img src={product.image3} className="w-full" />
+            <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+              <a href="#slide2" className="btn btn-circle">
+                ❮
+              </a>
+              <a href="#slide4" className="btn btn-circle">
+                ❯
+              </a>
+            </div>
+          </div>
+        </div>
+      ) : (
+        "No carousal"
+      )}
 
       <div>
         {brandCars.length > 0 ? (
@@ -116,17 +122,23 @@ const BrandProducts = () => {
                     </Link>
                   </div>
                   <div className="flex justify-between">
-                    <button className="btn btn-accent w-full">Update</button>
+                    <Link
+                      className="btn btn-accent w-full"
+                      to={`/update/${car._id}`}
+                    >
+                      Update
+                    </Link>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div>
-            <h2>
-              There is no products for now.You will get an update on we are
-              available for products.
+          <div className="flex justify-center items-center">
+            <h2 className="text-2xl font-bold text-center">
+              There is no products for now.
+              <br />
+              You will get an update when we are available for products.
             </h2>
           </div>
         )}
