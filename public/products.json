@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Tesla",
+        "image1": "https://i.postimg.cc/m2QL10R3/c0f23d58843407-5a0b71aaa9208.jpg",
+        "image2": "https://i.postimg.cc/gj3WRZ9c/tesla-giveaway.jpg",
+        "image3": "https://i.postimg.cc/wB1nLmLK/ccc97b9c318f3a2b19d3de6ca11bf2ed.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Mercedes",
+        "image1": "https://i.postimg.cc/TwCmxpNw/3f87f253235c2e3d687e8881ad994799.jpg",
+        "image2": "https://i.postimg.cc/LsvhYGtQ/mercedes-benz-car-ad-bombay-times-16-07-2017.jpg",
+        "image3": "https://i.postimg.cc/bv6kcZBv/502fa490f93a07d8e726ba168646cfe2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "BMW",
+        "image1": "https://i.postimg.cc/ncRJmZgD/a-ad5-1024x768-3.jpg",
+        "image2": "https://i.postimg.cc/wvVPdQdm/221bb50a8057ffb528c73f7d54bf8684.png",
+        "image3": "https://i.postimg.cc/HL0vQ9nh/aff4d6b4df03bfc5b47e50f6e8105127.png"
+    },
+    {
+        "id": 4,
+        "name": "Ford",
+        "image1": "https://i.postimg.cc/Px96H3RN/all-new-mustang-landing-page-banner-mobile.jpg",
+        "image2": "https://i.postimg.cc/9MRpLPQ2/Mustang-Ford-Advertisement-7-Go-further-The-picture-is-an-advertisement-of-Mustang.png",
+        "image3": "https://i.postimg.cc/nVN5fzyT/Screenshot-2021-05-19-at-18-09-23.png"
+    },
+    {
+        "id": 5,
+        "name": "Toyota",
+        "image1": "https://i.postimg.cc/rmw6sPjJ/used-toyota-yaris-768x576.jpg",
+        "image2": "https://i.postimg.cc/mgf0CDVh/toyota-cars-service-cost-r-3500-a-year-ad-bombay-times-02-04-2019.png",
+        "image3": "https://i.postimg.cc/nzDWXf7q/7bee6ff76cb296d57bde14414063395f.png"
+    },
+    {
+        "id": 6,
+        "name": "Honda",
+        "image1": "https://i.postimg.cc/0yqK8KmM/RETAIL03-181009832-AR-1-EDYOKGJHDEAB.jpg",
+        "image2": "https://i.postimg.cc/9X6Bspmy/Ad-Age1-Laura-Montenegro-0.png",
+        "image3": "https://i.postimg.cc/s2gP5HmC/75e6a9de462841e1bbec2089f9cb3ac6.jpg"
+    }
+]

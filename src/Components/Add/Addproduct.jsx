@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 
 const Addproduct = () => {
     const handleForm = e => {
@@ -24,6 +25,13 @@ const Addproduct = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            if(data.insertedId){
+                Swal.fire(
+                    'Success!',
+                    'Your login successful',
+                    'success'
+                  )
+            }
         })
     }
 

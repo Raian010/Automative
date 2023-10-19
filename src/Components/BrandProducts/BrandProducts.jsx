@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReactStars from "react-rating-stars-component";
-import { FaDollarSign,FaCar } from 'react-icons/fa'; 
+import { FaDollarSign, FaCar } from "react-icons/fa";
 
 const ratingChanged = (newRating) => {
   console.log(newRating);
@@ -21,63 +21,115 @@ const BrandProducts = () => {
   const brandCars = cars.filter((car) => car.brand === brand);
   console.log(brandCars);
 
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
+    fetch('/products.json')
+      .then((res) => res.json())
+      .then((data) => setProducts(data));
+  }, []);
+  console.log(products);
+
+  const product = products.find(produc => produc.name == brand)
+  console.log(product);
+  // const {image1,image2,image3} = product;
+  // console.log(image1,image2,image3);
+
   return (
     <div>
-      <h3>There is {cars.length} </h3>
-      {/* <div className="carousel rounded-box">
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1559703248-dcaaec9fab78.jpg" alt="Burger" />
+      {/* <h3>
+        {brandCars.length > 0
+          ? `There is ${brandCars.length} cars`
+          : "There is no cars"}{" "}
+      </h3> */}
+
+     
+      <div className="carousel w-full">
+  <div id="slide1" className="carousel-item relative w-full">
+    <img src={product.image1} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide4" className="btn btn-circle">❮</a> 
+      <a href="#slide2" className="btn btn-circle">❯</a>
+    </div>
   </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1565098772267-60af42b81ef2.jpg" alt="Burger" />
+  <div id="slide2" className="carousel-item relative w-full">
+    <img src={product.image2}className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide1" className="btn btn-circle">❮</a> 
+      <a href="#slide3" className="btn btn-circle">❯</a>
+    </div>
   </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1572635148818-ef6fd45eb394.jpg" alt="Burger" />
+  <div id="slide3" className="carousel-item relative w-full">
+    <img src={product.image3} className="w-full" />
+    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+      <a href="#slide2" className="btn btn-circle">❮</a> 
+      <a href="#slide4" className="btn btn-circle">❯</a>
+    </div>
   </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1494253109108-2e30c049369b.jpg" alt="Burger" />
-  </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1550258987-190a2d41a8ba.jpg" alt="Burger" />
-  </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1559181567-c3190ca9959b.jpg" alt="Burger" />
-  </div> 
-  <div className="carousel-item">
-    <img src="/images/stock/photo-1601004890684-d8cbf643f5f2.jpg" alt="Burger" />
-  </div>
-</div> */}
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-        {brandCars.map((car) => (
-          <div key={car._id} className="card bg-base-100 shadow-xl">
-            <figure>
-              <img src={car.image} alt="Cars" />
-            </figure>
-            <div className="card-body space-y-3">
-              <h2 className="text-center text-4xl font-bold">{car.brand}</h2>
-              <h2 className="text-xl mt-4 font-bold">Model- <span className="text-2xl">{car.name}</span></h2>
-             <div className="flex justify-between items-center">
-             <p className="text-2xl font-semibold flex  items-center"><span><FaDollarSign></FaDollarSign></span>{car.price}</p>
-              <p className="text-2xl font-semibold flex items-center"><span className="mr-2"><FaCar></FaCar></span>{car.type}</p>
-             </div>
-              <div className="flex justify-around">
-              <p className="text-2xl flex font-semibold">
-                <span className="mr-2">Rating-</span><ReactStars
-                  count={parseFloat(car.rating)}
-                  onChange={ratingChanged}
-                  size={24}
-                  activeColor="#ffd700"
-                />
-                </p>
-                <Link to={`/details/${car._id}`}><button className="btn btn-primary">Details</button></Link>
+</div>
+      
+
+      <div>
+        {brandCars.length > 0 ? (
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+            {brandCars.map((car) => (
+              <div key={car._id} className="card bg-base-100 shadow-xl">
+                <figure>
+                  <img
+                    className="h-[340px] w-full"
+                    src={car.image}
+                    alt="Cars"
+                  />
+                </figure>
+                <div className="card-body space-y-3">
+                  <h2 className="text-center text-4xl font-bold">
+                    {car.brand}
+                  </h2>
+                  <h2 className="text-xl mt-4 font-bold">
+                    Model- <span className="text-2xl">{car.name}</span>
+                  </h2>
+                  <div className="flex justify-between items-center">
+                    <p className="text-2xl font-semibold flex  items-center">
+                      <span>
+                        <FaDollarSign></FaDollarSign>
+                      </span>
+                      {car.price}
+                    </p>
+                    <p className="text-2xl font-semibold flex items-center">
+                      <span className="mr-2">
+                        <FaCar></FaCar>
+                      </span>
+                      {car.type}
+                    </p>
+                  </div>
+                  <div className="flex justify-around">
+                    <p className="text-2xl flex font-semibold">
+                      <span className="mr-2">Rating-</span>
+                      <ReactStars
+                        count={parseFloat(car.rating)}
+                        onChange={ratingChanged}
+                        size={24}
+                        activeColor="#ffd700"
+                      />
+                    </p>
+                    <Link to={`/details/${car._id}`}>
+                      <button className="btn btn-primary">Details</button>
+                    </Link>
+                  </div>
+                  <div className="flex justify-between">
+                    <button className="btn btn-accent w-full">Update</button>
+                  </div>
+                </div>
               </div>
-              <div className="flex justify-between">
-                
-                <button className="btn btn-accent w-full">Update</button>
-              </div>
-            </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div>
+            <h2>
+              There is no products for now.You will get an update on we are
+              available for products.
+            </h2>
+          </div>
+        )}
       </div>
     </div>
   );
