@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
+// import "/light.css";
+// import "/dark.css";
 
 const Navbar = () => {
   const {user,logout} = useContext(AuthContext);
@@ -9,6 +11,14 @@ const Navbar = () => {
     logout();
   }
 
+  // const toggleTheme = () => {
+  //   const link = document.getElementById("theme-link");
+  //   if (link.getAttribute("href")  === "light.css") {
+  //     link.setAttribute("href", "dark.css");
+  //   } else {
+  //     link.setAttribute("href", "light.css");
+  //   }
+  // };
   const links = (
     <>
       <li>
@@ -24,6 +34,7 @@ const Navbar = () => {
         <NavLink to="/register">Register</NavLink>
       </li>
     </>
+    
   );
   return (
     <div className="navbar flex items-center bg-base-100">
@@ -68,13 +79,14 @@ const Navbar = () => {
             <div className="flex items-center"><span className="font-bold">
               {
               user ?
-               <p className="flex items-center">
+               <p className="flex flex-col md:flex-row items-center">
                 <span>
-                  <img className={user.photoURL ? 'h-[60px] mr-2 rounded-full bg-gray-400 p-1' : ""} src={user ? user.photoURL : ""} alt="" />
+                  <img className={user.photoURL ? 'hidden md:block lg:h-[60px] mr-2 rounded-full bg-gray-400 p-1' : ""} src={user ? user.photoURL : ""} alt="" />
                   </span>
-                  <span className="mr-2 bg-blue-200 p-3 rounded-lg">{user.email}</span></p> : "" }
+                  <span className="mr-2 bg-blue-200 p-2 lg:p-3 rounded-lg">{user.email}</span></p> : "" }
                </span>
-               <Link to="/login"><button onClick={handlelogOut} className="btn btn-primary">Logout</button></Link></div> :
+               <Link to="/login"><button onClick={handlelogOut} className="btn btn-primary">Logout</button></Link>
+               </div> :
             <NavLink to="/login"><button className="btn btn-primary">Login</button></NavLink>
           }
           
@@ -82,5 +94,7 @@ const Navbar = () => {
     </div>
   );
 };
+
+{/* <button onClick={toggleTheme} className="btn btn-primary">Toggle Theme</button> */}
 
 export default Navbar;

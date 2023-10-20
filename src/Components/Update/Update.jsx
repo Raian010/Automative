@@ -9,7 +9,7 @@ const Update = () => {
 
   const [cars,setCars] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:5000/cars')
+    fetch('https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars')
     .then(res => res.json())
     .then(data => setCars(data))
   },[])
@@ -31,7 +31,7 @@ const Update = () => {
     console.log(user);
 
     form.reset();
-    fetch(`http://localhost:5000/cars/${brandCar._id}`, {
+    fetch(`https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars/${brandCar._id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -112,7 +112,7 @@ const Update = () => {
             />
           </div>
         </form>
-      </div> : "no data"
+      </div> : <p><span className="loading loading-spinner loading-lg"></span></p>
       }
     </div>
   );

@@ -15,7 +15,7 @@ const Addproduct = () => {
     console.log(user);
 
     form.reset();
-    fetch("http://localhost:5000/cars", {
+    fetch("https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars", {
       method: "POST",
       headers: {
         "content-type": "application/json",

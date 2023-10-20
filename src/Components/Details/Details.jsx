@@ -9,7 +9,7 @@ const Details = () => {
 
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
+    fetch("https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars")
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, []);
@@ -19,7 +19,7 @@ const Details = () => {
 
   const handleCart = () => {
     fetch(
-      "https://automative-server-572et3whi-raians-projects.vercel.app/carts",
+      "https://automative-server-1xztbl6tl-raians-projects.vercel.app/carts",
       {
         method: "POST",
         headers: {

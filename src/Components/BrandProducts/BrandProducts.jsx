@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
 import { FaDollarSign, FaCar } from "react-icons/fa";
 
-const ratingChanged = (newRating) => {
-  console.log(newRating);
-};
+
 
 const BrandProducts = () => {
   const { brand } = useParams();
@@ -13,7 +10,7 @@ const BrandProducts = () => {
 
   const [cars, setCars] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/cars")
+    fetch("https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars")
       .then((res) => res.json())
       .then((data) => setCars(data));
   }, []);
@@ -35,7 +32,7 @@ const BrandProducts = () => {
   return (
     <div>
       {product ? (
-        <div className="carousel w-full">
+        <div className="carousel h-[70vh] w-[2/3]">
           <div id="slide1" className="carousel-item relative w-full">
             <img src={product.image1} className="w-full" />
             <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
@@ -76,7 +73,9 @@ const BrandProducts = () => {
 
       <div>
         {brandCars.length > 0 ? (
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          <div>
+            <h2 className="text-4xl font-bold text-amber-400 text-center mt-5 mb-5">Products</h2>
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
             {brandCars.map((car) => (
               <div key={car._id} className="card bg-base-100 shadow-xl">
                 <figure>
@@ -110,12 +109,7 @@ const BrandProducts = () => {
                   <div className="flex justify-around">
                     <p className="text-2xl flex font-semibold">
                       <span className="mr-2">Rating-</span>
-                      <ReactStars
-                        count={parseFloat(car.rating)}
-                        onChange={ratingChanged}
-                        size={24}
-                        activeColor="#ffd700"
-                      />
+                     {car.rating}/5
                     </p>
                     <Link to={`/details/${car._id}`}>
                       <button className="btn btn-primary">Details</button>
@@ -132,6 +126,7 @@ const BrandProducts = () => {
                 </div>
               </div>
             ))}
+          </div>
           </div>
         ) : (
           <div className="flex justify-center items-center">

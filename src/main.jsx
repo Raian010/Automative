@@ -51,13 +51,13 @@ const router = createBrowserRouter([
         path: "/brandProducts/:brand",
         element: <BrandProducts></BrandProducts>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cars/${params.brand}`),
+          fetch(`https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars/${params.brand}`),
       },
       {
         path: "/details/:id",
         element: <PrivateRoute><Details></Details></PrivateRoute>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cars/${params.id}`),
+          fetch(`https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars/${params.id}`),
       },
 
       {
@@ -69,13 +69,13 @@ const router = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "http://localhost:5000/carts"
+            "https://automative-server-1xztbl6tl-raians-projects.vercel.app/carts"
           ),
       },
       {
         path: "/update/:id",
-        element: <Update></Update>,
-        loader: ({params}) => fetch(`http://localhost:5000/cars/${params.id}`),
+        element: <PrivateRoute><Update></Update></PrivateRoute>,
+        loader: ({params}) => fetch(`https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars/${params.id}`),
         
       },
     ],
