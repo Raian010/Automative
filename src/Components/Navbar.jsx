@@ -1,24 +1,17 @@
 import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
-// import "/light.css";
-// import "/dark.css";
+
 
 const Navbar = () => {
   const {user,logout} = useContext(AuthContext);
+  
 
   const handlelogOut = () => {
     logout();
   }
 
-  // const toggleTheme = () => {
-  //   const link = document.getElementById("theme-link");
-  //   if (link.getAttribute("href")  === "light.css") {
-  //     link.setAttribute("href", "dark.css");
-  //   } else {
-  //     link.setAttribute("href", "light.css");
-  //   }
-  // };
+
   const links = (
     <>
       <li>
@@ -33,6 +26,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/register">Register</NavLink>
       </li>
+      
     </>
     
   );
@@ -86,8 +80,10 @@ const Navbar = () => {
                   <span className="mr-2 bg-blue-200 p-2 lg:p-3 rounded-lg">{user.email}</span></p> : "" }
                </span>
                <Link to="/login"><button onClick={handlelogOut} className="btn btn-primary">Logout</button></Link>
+
                </div> :
             <NavLink to="/login"><button className="btn btn-primary">Login</button></NavLink>
+            
           }
           
         </div>
@@ -95,6 +91,5 @@ const Navbar = () => {
   );
 };
 
-{/* <button onClick={toggleTheme} className="btn btn-primary">Toggle Theme</button> */}
 
 export default Navbar;
