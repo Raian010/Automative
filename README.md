@@ -14,3 +14,5 @@ https://automative-assignment.web.app
 -Inside details page we can see an add to cart button that will add out selected cart to MyCart page.
 
 -Register page is there if we are not registered and those who are already registered can go to login page and sign in.
+
+-There is our services and frequently asked questions section in hompage,that will tell more about us.
