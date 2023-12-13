@@ -1,11 +1,16 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../Provider/Authprovider";
+import { FaToggleOff, FaToggleOn } from "react-icons/fa";
 
 
 const Navbar = () => {
   const {user,logout} = useContext(AuthContext);
-  
+  const [darkMode,setDarkMode] = useState(false);
+  const handleToggleDarkMode = () => {
+    setDarkMode(!darkMode);
+    document.body.classList.toggle('dark-mode', !darkMode);
+  };
 
   const handlelogOut = () => {
     logout();
@@ -31,7 +36,7 @@ const Navbar = () => {
     
   );
   return (
-    <div className="navbar flex items-center bg-base-100">
+    <div className={`navbar flex items-center ${darkMode ? 'bg-base-900' : 'bg-base-100'}`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -68,6 +73,7 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
+     
           {
             user ?
             <div className="flex items-center"><span className="font-bold">
@@ -85,7 +91,9 @@ const Navbar = () => {
             <NavLink to="/login"><button className="btn btn-primary">Login</button></NavLink>
             
           }
-          
+           <button onClick={handleToggleDarkMode} className="btn btn-sm">
+          {darkMode ? <FaToggleOn className=" bg-white"></FaToggleOn> : <FaToggleOff></FaToggleOff>}
+        </button>
         </div>
     </div>
   );
