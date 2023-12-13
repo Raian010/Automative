@@ -1,11 +1,11 @@
-import {  useState } from "react";
+import { useState } from "react";
 import { FaCar, FaDollarSign } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Cart = () => {
   const loadedCarts = useLoaderData();
-  
+
   const [carts, setCarts] = useState(loadedCarts);
 
   console.log(carts);
@@ -21,9 +21,12 @@ const Cart = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://automative-server-1xztbl6tl-raians-projects.vercel.app/carts/${_id}`,{
-            method:'DELETE'
-          })
+        fetch(
+          `https://automative-server-jz31j4cxc-raians-projects.vercel.app/carts/${_id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

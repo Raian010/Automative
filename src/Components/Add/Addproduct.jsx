@@ -15,13 +15,16 @@ const Addproduct = () => {
     console.log(user);
 
     form.reset();
-    fetch("https://automative-server-1xztbl6tl-raians-projects.vercel.app/cars", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
+    fetch(
+      "https://automative-server-jz31j4cxc-raians-projects.vercel.app/cars",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(user),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -34,7 +37,7 @@ const Addproduct = () => {
   return (
     <div className="mt-10">
       <h2 className="text-3xl font-bold text-center">
-        Products <span className="text-amber-400">Adding</span>
+        Add <span className="text-blue-600">Jobs</span>
       </h2>
       <form onSubmit={handleForm} className="mt-10 space-y-8 bg-gray-200 p-10">
         <input
